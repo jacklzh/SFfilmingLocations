@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#listsection {
+    line-height:30px;
+ 	min-height: 300px;
+    height:80%;
+    position:absolute;
+    width:30%;
+    right: 10px;
+    padding:5px;	      
+}
+
+#mapsection {
+    width:65%;
+    min-height: 300px;
+    height:80%;
+    position:absolute;
+    float:left;
+    padding:10px;	 	 
+}
+footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    bottom:0;
+    left:0;
+    position:absolute;
+   width: 100%;
+}
+</style>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    
+
+<meta charset="UTF-8">
+<title>City Map with Movie Filming</title>
+</head>
+<body>
+<header>
+<h1>City Map with Movie Filming</h1>
+</header>
+
+
+<div id="mapsection">
+</div>
+
+<div id="listsection">
+	<div id="search">
+		<p> Please type film name </p>
+		<input id="searchbox" type="text" name="filmname">
+		<input type="button" value="search" id="searchbut">
+	</div>
+	<div id="listresult">
+	</div>
+</div>
+<footer>
+Copyright © LZ
+</footer>
+
+</body>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="js/main.js"></script>
+</html>
+
