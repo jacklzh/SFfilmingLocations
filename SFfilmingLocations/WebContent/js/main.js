@@ -21,6 +21,11 @@ function showPosition(position) {
 	var marker=new google.maps.Marker({
 		position:geolocate,
 	});
+    infowindow.setContent("You are here.");
+    infowindow.open(map, marker);
+	google.maps.event.addListener(marker, 'click', function() {
+	    infowindow.open(map, this);
+	});
 	icons.push(marker);
 	marker.setMap(map);
 }
@@ -34,7 +39,7 @@ function searchLocations(markers){
 	}
 	var sf = new google.maps.LatLng(37.756139,-122.441033);
 	var service = new google.maps.places.PlacesService(map);
-	for(i=0; i<markers.length; i++){
+	for(var i=0; i<markers.length; i++){
 
 		var request = {
 		    query:  markers[i] + " san francisco",
@@ -44,6 +49,10 @@ function searchLocations(markers){
 		
 		service.textSearch(request, callback);
 	}
+	var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+        this.setZoom(13);
+        google.maps.event.removeListener(boundsListener);
+	});
 	console.log(j++);
 }
 function deleteMarkers() {
@@ -54,20 +63,18 @@ function deleteMarkers() {
 }
 
 
-var bounds;
+var bounds = new google.maps.LatLngBounds();
 var infowindow = new google.maps.InfoWindow();
 
 function callback(results, status) {
 	
 	if (status == google.maps.places.PlacesServiceStatus.OK) {
 		console.log(results[0]);
-		bounds = new google.maps.LatLngBounds();
 		createMarker(results[0]);
-		map.fitBounds(bounds);
-		var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-	        this.setZoom(12);
-	        google.maps.event.removeListener(boundsListener);
-		});
+//		var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+//	        this.setZoom(12);
+//	        google.maps.event.removeListener(boundsListener);
+//		});
 	}else {
 		console.log(status);
 	}
@@ -88,6 +95,8 @@ function createMarker(place) {
 	    infowindow.setContent(place.name);
 	    infowindow.open(map, this);
 	});
+	map.fitBounds(bounds);
+
 }
 
 //---------------------------------------------------------------------------------------
