@@ -129,7 +129,7 @@ $(document).ready(function(){
 				  searchLocations(locations);
 				  
 				  for (var i =0;i<locations.length;i++) {
-					  $("#listresult").append($("<div>").html(locations[i]).attr('class',"loc"));
+					  $("#listresult").append($("<li>").html(locations[i]).attr('class',"loc"));
 				  }
 				  $('.loc').click(function(){
 					  var location = $(this).text();
