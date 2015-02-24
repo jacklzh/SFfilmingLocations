@@ -1,0 +1,21 @@
+Descriptioin: The project is to show all movie filming locations in SF, it fetchs updated data from https://data.sfgov.org/ automatically, and user can search movie film location easily by movie title.
+Solution: Apache Tomcat 7 for backend, html/javascript for front end. This solution is full stack. 
+
+1. This web application use apache tomcat servlet as backend, the reason is that apache tomcat is widely used and it is very easy to develop and deloy. Besides, there are a lot of documents about apache tomcat which help to solve the problem quickly. Tomcat has all features we need for this simple web application. 
+2. For data storage, I was thinking to use database to store data, but after I found that the data set was very small, then memory is big enough to keep all datas. 
+3. For front end, because the web application front page is simple, then html and javascript are chosen. JQuery is also been used, it sends ajax request to backend to fetch movie information and then cache it on browser. Whenever user start typing on search box, typeahead feature get activated, and user will see all related movies while user typing. I used Jquery lib to do the typeahead/autocomplete function.
+4. Google map API is used for map display. It has best documentation and it is most functional and powerful map API. However, Google map API service will be charged if there are too much requests when using the API. There is another web map API called OpenStreetMap which is free to use, but it is not user friendly as Google Map.
+
+
+User Guidlines:
+1. Open page: http://linfengzhou.com:8080/SFfilmingLocations/
+2. Enable geolocation to show your current location as initial position on the map. (optional)
+3. Type Movie name on search bar on the right side of page. 
+4. Click search, All film locations for this movie will be displayed on map as well as on right side as list
+5. Click any location in the list to focus on a single location on the map.
+
+LinkedIn: www.linkedin.com/in/zhoulinfeng/en
+GitHub: https://github.com/jacklzh
+Host: http://linfengzhou.com:8080/SFfilmingLocations/
+
+
