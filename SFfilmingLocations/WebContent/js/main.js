@@ -1,5 +1,7 @@
 var map;
 var icons = [];
+var geolocate;
+
 function initialize() {
 
 	var mapProp = {
@@ -15,8 +17,7 @@ function initialize() {
 }
 
 function showPosition(position) {
-
-	var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	map.setCenter(geolocate); 
 	var marker=new google.maps.Marker({
 		position:geolocate,
@@ -33,7 +34,6 @@ function showPosition(position) {
 google.maps.event.addDomListener(window, 'load', initialize);
 var j=0;
 function searchLocations(markers){
-	
 	if (markers.length !=0) {
 		deleteMarkers();
 	}
@@ -49,10 +49,6 @@ function searchLocations(markers){
 		
 		service.textSearch(request, callback);
 	}
-	var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-        this.setZoom(13);
-        google.maps.event.removeListener(boundsListener);
-	});
 	console.log(j++);
 }
 function deleteMarkers() {
@@ -62,7 +58,6 @@ function deleteMarkers() {
 	 icons = [];
 }
 
-
 var bounds = new google.maps.LatLngBounds();
 var infowindow = new google.maps.InfoWindow();
 
@@ -71,10 +66,6 @@ function callback(results, status) {
 	if (status == google.maps.places.PlacesServiceStatus.OK) {
 		console.log(results[0]);
 		createMarker(results[0]);
-//		var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-//	        this.setZoom(12);
-//	        google.maps.event.removeListener(boundsListener);
-//		});
 	}else {
 		console.log(status);
 	}
